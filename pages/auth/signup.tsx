@@ -44,6 +44,7 @@ const Signup = () => {
 						id='mail'
 						name='mail'
 						type='email'
+						value={email}
 						required={true}
 						disabled={loading}
 						onChange={setEmail}
@@ -61,6 +62,7 @@ const Signup = () => {
 						name='pass'
 						type='password'
 						required={true}
+						value={password}
 						disabled={loading}
 						onChange={setPassword}
 						placeholder='password'

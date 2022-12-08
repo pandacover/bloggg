@@ -48,6 +48,7 @@ const Login = () => {
 						type='email'
 						required={true}
 						disabled={loading}
+						value={email}
 						onChange={setEmail}
 						placeholder='john@doe'
 						className='bg-gray-300 focus-within:bg-gray-300/50 rounded-sm'
@@ -64,6 +65,7 @@ const Login = () => {
 						type='password'
 						required={true}
 						disabled={loading}
+						value={password}
 						onChange={setPassword}
 						placeholder='password'
 						className='bg-gray-300 focus-within:bg-gray-300/50 rounded-sm'
