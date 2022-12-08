@@ -1,0 +1,56 @@
+.loader-container * {
+	user-select: none;
+}
+
+.loader-container {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+	background-color: #f3f4f6;
+}
+
+.loader {
+	position: relative;
+	display: inline-block;
+	font-size: 10vmin;
+	color: transparent;
+	font-weight: bold;
+	overflow: hidden;
+	transition: clip-path 275ms ease;
+	color: transparent;
+}
+.loader::before {
+	position: absolute;
+	content: attr(data-content);
+	color: transparent;
+	clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+	animation: loading 4s ease forwards infinite;
+	background: linear-gradient(
+		40deg,
+		#222 0%,
+		#222 30%,
+		#434242 50%,
+		#22a39f 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+
+@keyframes loading {
+	0% {
+		clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+	}
+	50% {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+	100% {
+		clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+	}
+}
