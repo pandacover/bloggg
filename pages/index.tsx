@@ -23,7 +23,7 @@ export const getServerSideProps = async ({
 }: {
 	[key: string]: any;
 }) => {
-	const user = getCookie("user", { req, res });
+	const user = getCookie("user", { req, res }) || {};
 
 	return {
 		props: {
