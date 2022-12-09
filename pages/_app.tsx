@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { UserContext } from "../lib/user-context";
 import { useState } from "react";
 import Router from "next/router";
-import PageLoader from "../components/page-loader";
+import Loader from "../components/loader";
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [data, setData] = useState<contextType["data"] | null>(null);
@@ -15,7 +15,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 	return (
 		<UserContext.Provider value={{ data, setData }}>
-			{loading ? <PageLoader /> : <Component {...pageProps} />}
+			{loading ? (
+				<Loader onPage={true} className='border-indigo-600 border-b-gray-200' />
+			) : (
+				<Component {...pageProps} />
+			)}
 		</UserContext.Provider>
 	);
 }

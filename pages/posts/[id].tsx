@@ -30,31 +30,13 @@ const Post = ({ data, error }: postProps) => {
 	);
 };
 
-export const getStaticPaths = async () => {
-	const { data, error } = await getEveryPosts();
-	const paths = data?.map((post) => {
-		return {
-			params: {
-				id: post.id,
-			},
-		};
-	});
-	return {
-		paths,
-		fallback: false,
-	};
-};
-
-export const getStaticProps = async ({
-	params,
-}: {
-	[key: string]: { id: string };
-}) => {
-	const { data, error } = await getOnePost(params.id);
+export const getServerSideProps = async (context: any) => {
+	const { id } = context.params;
+	const { data, error } = await getOnePost(id);
 
 	return {
 		props: {
-			data: data ? data[0] : {},
+			data: data ? data[0] : null,
 			error: error?.message || "",
 		},
 	};

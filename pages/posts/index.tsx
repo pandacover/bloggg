@@ -54,7 +54,7 @@ const Posts = ({ data, error }: postsProps) => {
 	);
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 	const { data, error } = await getEveryPosts();
 	return {
 		props: {
