@@ -16,7 +16,12 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<UserContext.Provider value={{ data, setData }}>
 			{loading ? (
-				<Loader onPage={true} className='border-indigo-600 border-b-gray-200' />
+				<div className='w-screen max-w-[1368px] h-screen mx-auto relative'>
+					<Loader
+						onPage={true}
+						className='border-indigo-600 border-b-gray-200'
+					/>
+				</div>
 			) : (
 				<Component {...pageProps} />
 			)}
