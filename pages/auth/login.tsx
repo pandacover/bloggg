@@ -1,12 +1,8 @@
-import { useState } from "react";
-import Layout from "../../components/layout";
-import Button from "../../components/button";
-import Input from "../../components/input";
-import Form from "../../components/form";
-import Link from "next/link";
-import Loader from "../../components/loader";
 import axios from "axios";
+import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/router";
+import { Layout, Button, Input, Form, Loader } from "../../components/UI";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -32,14 +28,14 @@ const Login = () => {
 		<Layout title='Signin'>
 			<Form
 				onSubmit={onFormSubmit}
-				className='bg-gray-200 shadow-lg shadow-gray-400 rounded-sm p-4 top-[calc(50%-219.5px)] w-[26rem] md:w-[30rem] left-[calc(50%-13rem)] md:left-[calc(50%-15rem)]'
+				className='bg-gray-200 shadow-lg shadow-gray-400 rounded-sm p-4 top-[calc(50%-219.5px)] w-[24rem] md:w-[30rem] left-[calc(50%-12rem)] md:left-[calc(50%-15rem)]'
 			>
-				<div className='mb-6'>
-					<div className='text-3xl mb-2'>Welcome Back</div>
-					<div className='text-xs'>Login to your account</div>
+				<div className='mb-4 md:mb-6'>
+					<div className='text-2xl md:text-3xl mb-2'>Welcome Back</div>
+					<div className='text-[11px] md:text-xs'>Login to your account</div>
 				</div>
-				<div className='flex flex-col gap-2 mb-6'>
-					<label htmlFor='mail' className='text-sm'>
+				<div className='flex flex-col gap-2 mb-4 md:mb-6'>
+					<label htmlFor='mail' className='text-xs md:text-sm'>
 						Email
 					</label>
 					<Input
@@ -55,8 +51,8 @@ const Login = () => {
 					/>
 					<div className='text-[11px] text-gray-800'>Email is required *</div>
 				</div>
-				<div className='flex flex-col gap-2 mb-6'>
-					<label htmlFor='pass' className='text-sm'>
+				<div className='flex flex-col gap-2 mb-4 md:mb-6'>
+					<label htmlFor='pass' className='text-xs md:text-sm'>
 						Password
 					</label>
 					<Input
@@ -74,7 +70,7 @@ const Login = () => {
 						Password is required *
 					</div>
 				</div>
-				<div className='h-11 mb-6'>
+				<div className='h-11 mb-4 md:mb-6'>
 					<Button
 						type='submit'
 						disabled={loading}

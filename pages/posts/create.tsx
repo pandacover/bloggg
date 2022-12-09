@@ -1,10 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import Button from "../../components/button";
-import Form from "../../components/form";
-import Input from "../../components/input";
-import Layout from "../../components/layout";
-import Loader from "../../components/loader";
+import { Button, Form, Input, Layout, Loader } from "../../components/UI";
 
 const Create = () => {
 	const [title, setTitle] = useState("");

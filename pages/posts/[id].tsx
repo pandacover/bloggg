@@ -1,6 +1,6 @@
 import Date from "../../components/date";
-import Layout from "../../components/layout";
-import { getEveryPosts, getOnePost } from "../../lib/supabase";
+import { Layout } from "../../components/UI";
+import { getOnePost } from "../../lib/supabase";
 
 type postProps = {
 	data: postsType;

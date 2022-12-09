@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Layout from "../../components/layout";
 import Date from "../../components/date";
+import { Layout, Navbar } from "../../components/UI";
 import { getEveryPosts } from "../../lib/supabase";
 
 type postsProps = {
@@ -12,6 +12,7 @@ const Posts = ({ data, error }: postsProps) => {
 	if (error) console.log(error);
 	return (
 		<Layout title='Explore'>
+			<Navbar />
 			<div className='w-[90vw] h-full mx-auto py-4'>
 				<div className='text-[10vmin] w-full text-center'>
 					Check out What&apos;s new
@@ -38,17 +39,6 @@ const Posts = ({ data, error }: postsProps) => {
 							</li>
 						))}
 				</ul>
-			</div>
-			<div className='w-[14rem] h-[60px] fixed bottom-10 left-[calc(50%-7rem)] rounded-md grid grid-cols-2 bg-black text-gray-300 text-sm divide-x-2 divide-gray-800 py-2'>
-				<Link
-					href='/posts/create'
-					className='hover:text-white flex justify-center items-center'
-				>
-					Create
-				</Link>
-				<button className='hover:text-white flex items-center justify-center'>
-					Logout
-				</button>
 			</div>
 		</Layout>
 	);

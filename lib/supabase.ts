@@ -6,11 +6,11 @@ const supabase = createClient(clientStore.url, clientStore.key);
 export const getEveryPosts = async () => {
 	const { data, error } = await supabase.from("posts").select("*");
 
-	data?.sort(({ created_at: a }, { created_b: b }) => {
-		if (a < b) return 1;
-		if (a > b) return -1;
-		return 0;
-	});
+	// data?.sort(({ created_at: a }, { created_b: b }) => {
+	// 	if (a < b) return 1;
+	// 	if (a > b) return -1;
+	// 	return 0;
+	// });
 
 	return { data, error };
 };

@@ -1,9 +1,9 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { UserContext } from "../lib/user-context";
-import { useState } from "react";
 import Router from "next/router";
-import Loader from "../components/loader";
+import { useState } from "react";
+import type { AppProps } from "next/app";
+import { Loader } from "../components/UI";
+import { UserContext } from "../lib/user-context";
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [data, setData] = useState<contextType["data"] | null>(null);

@@ -1,6 +1,4 @@
-import { AxiosError } from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ApiError } from "next/dist/server/api-utils";
 import { getEveryPosts, getOnePost, insertPost } from "../../lib/supabase";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
