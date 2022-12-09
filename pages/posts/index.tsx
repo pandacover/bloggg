@@ -13,7 +13,7 @@ const Posts = ({ data, error }: postsProps) => {
 	return (
 		<Layout title='Explore'>
 			<Navbar />
-			<div className='w-[90vw] h-full mx-auto py-4'>
+			<div className='w-[90vw] h-full mx-auto py-40'>
 				<div className='text-[10vmin] w-full text-center'>
 					Check out What&apos;s new
 				</div>
