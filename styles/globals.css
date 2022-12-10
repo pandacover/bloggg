@@ -18,4 +18,8 @@
 			transparent 100%
 		);
 	}
+
+	.no-scroll {
+		@apply overflow-hidden;
+	}
 }

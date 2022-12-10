@@ -1,21 +1,20 @@
-import { useEffect, useState } from "react";
 import ThemeIcon from "./theme-icon";
+import { useEffect, useState } from "react";
 import { IoPower, IoClose } from "react-icons/io5";
-import {
-	HiMoon,
-	HiOutlineSun as HiSun,
-	HiComputerDesktop as HiDesktop,
-	HiChevronDown as HiDown,
-} from "react-icons/hi2";
-
+import { HiChevronDown as HiDown } from "react-icons/hi2";
+import useDeviceType from "../../../../lib/useDeviceType.hooks";
 import { HiOutlineDotsVertical as HiDots } from "react-icons/hi";
 
 const MenuMobile = () => {
+	const isDesktop = useDeviceType();
+
 	const [[light, dark, system], setThemeIndex] = useState([
 		false,
 		false,
 		false,
 	]);
+
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -37,6 +36,14 @@ const MenuMobile = () => {
 		localStorage.theme = selected;
 	};
 
+	const onMenuToggle = (isOpen?: boolean) => {
+		setIsMobileMenuOpen(isOpen !== undefined ? isOpen : !isMobileMenuOpen);
+		setToggleMenu(isOpen !== undefined ? isOpen : !toggleMenu);
+		isOpen !== undefined
+			? document.body.classList.remove("no-scroll")
+			: document.body.classList.toggle("no-scroll");
+	};
+
 	useEffect(() => {
 		if (!localStorage.theme || light || dark || system) return;
 		const selected = localStorage.theme;
@@ -45,13 +52,19 @@ const MenuMobile = () => {
 		);
 	}, [light, dark, system]);
 
+	useEffect(() => {
+		if (isDesktop) {
+			onMenuToggle(false);
+		}
+	}, [isDesktop]);
+
 	return (
 		<div className='h-full md:hidden flex items-center'>
-			<button onClick={() => setToggleMenu(!toggleMenu)}>
+			<button onClick={() => onMenuToggle()}>
 				<HiDots />
 			</button>
 			<div
-				className='fixed hidden data-[open-state="true"]:block w-80 right-4 top-4 rounded-md bg-white py-6 px-4 shadow-[0_0_8px_0px_#999]'
+				className='absolute z-20 hidden data-[open-state="true"]:block w-80 right-4 top-4 rounded-md bg-white shadow-lg py-6 px-4'
 				data-open-state={toggleMenu}
 			>
 				<div className='relative w-full flex flex-col gap-6 divide-y-2 tracking-wide'>
@@ -82,12 +95,17 @@ const MenuMobile = () => {
 					</div>
 					<button
 						className='absolute right-0 border-none text-lg'
-						onClick={() => setToggleMenu(!toggleMenu)}
+						onClick={() => onMenuToggle()}
 					>
 						<IoClose />
 					</button>
 				</div>
 			</div>
+			<div
+				id='blurred-menu'
+				className='absolute -right-2 top-0 w-screen h-screen z-10 bg-white/50 backdrop-blur hidden data-[toggle-blurred="true"]:block'
+				data-toggle-blurred={isMobileMenuOpen}
+			/>
 		</div>
 	);
 };

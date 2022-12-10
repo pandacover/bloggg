@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { MenuDesktop, MenuMobile } from "./utility-menu";
+import { useState } from "react";
 import BreadCrums from "./bread-crums";
+import { MenuDesktop, MenuMobile } from "./utility-menu";
 
 const Navbar = () => {
 	return (
 		<>
-			<header className='w-full h-16 px-2 md:px-4 fixed top-0 left-0 bg-white bg-opacity-80 backdrop-blur'>
+			<header className='w-full h-32 flex flex-col px-2 md:px-4 fixed top-0 left-0 bg-white bg-opacity-80 backdrop-blur'>
 				<nav className='flex-1 h-full flex items-center'>
 					<div className='text-lg font-medium flex-1 h-full flex items-center'>
 						bloggg
@@ -21,10 +22,10 @@ const Navbar = () => {
 						<MenuMobile />
 					</div>
 				</nav>
+				<div className='w-full flex-1 flex items-center capitalize text-gray-400'>
+					<BreadCrums />
+				</div>
 			</header>
-			<div className='w-full h-16 px-2 md:px-4 mt-16 flex items-center capitalize text-gray-400 bg-opacity-80 bg-white'>
-				<BreadCrums />
-			</div>
 		</>
 	);
 };
